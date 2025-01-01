@@ -1,0 +1,36 @@
+@use "../abstracts/mixins" as Mixins;
+.about {
+  &__block1 {
+    --flow-spacer: var(--space-l);
+    &-img {
+      -webkit-clip-path: url(#about-path);
+      clip-path: url(#about-path);
+    }
+    & img {
+      width: fit-content;
+      height: 100%;
+      object-fit: cover;
+    }
+    &-title {
+        max-width: 25ch;
+      font-size: var(--size-3);
+      @include Mixins.breakpoint(lg) {
+        font-size: var(--size-4);
+        max-width: 18ch;
+      }
+    }
+  }
+
+  &__block2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+    align-items: center;
+    @include Mixins.breakpoint(lg) {
+      grid-template-columns: 55% 1fr;
+    }
+    &-card{
+      --gap:var(--space-l);
+    }
+  }
+}

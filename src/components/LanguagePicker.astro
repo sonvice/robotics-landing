@@ -1,0 +1,120 @@
+---
+import { Icon } from 'astro-icon/components';
+import { languages } from 'src/i18n/ui';
+import { getLangFromUrl, useTranslatedPath, getRouteFromUrl } from 'src/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+
+// Configurar la función para traducir rutas según el idioma
+const translatePath = useTranslatedPath(lang);
+
+// Obtener la ruta actual para que los enlaces apunten al lugar correcto
+const currentRoute = getRouteFromUrl(Astro.url);
+
+// Preparar la lista de idiomas disponibles con sus enlaces
+const languageOptions = Object.entries(languages).map(([langKey, label]) => ({
+  langKey,
+  label,
+  url: translatePath(`/${currentRoute ?? ''}`, langKey),
+}));
+---
+
+<div class="language-picker">
+  <button 
+  id="language-button"
+  class="btn"
+    type="button"
+    data-type="default" 
+    class="dropdown-toggle" 
+    aria-expanded="false" 
+    aria-label="Change Language"
+    slot="icon-left"
+  >
+  <Icon name="languages" />
+    {languages[lang] ?? "Language"}
+  </button>
+  <ul class="dropdown-menu" id="language-menu">
+    {languageOptions.map(({ langKey, label, url }) => (
+      <li>
+        <a 
+          href={url}
+          class={` dropdown-item ${lang === langKey ? 'active' : ''}`}
+          aria-current={lang === langKey ? "page" : undefined}
+        >
+          {label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const button = document.getElementById('language-button');
+      const menu = document.getElementById('language-menu');
+  
+      if (button && menu) {
+        // Manejar el evento de clic en el botón para alternar la visibilidad del menú
+        button.addEventListener('click', function () {
+          const isExpanded = button.getAttribute('aria-expanded') === 'true';
+          
+          // Alternar el valor de aria-expanded y la visibilidad del menú
+          button.setAttribute('aria-expanded', !isExpanded);
+          menu.classList.toggle('display-block', !isExpanded);
+          menu.classList.toggle('display-none', isExpanded);
+        });
+      }
+    });
+  </script>
+
+<style>
+  .btn{
+    --button-radius:var(--md);
+    --button-font-size:var(--size--1);
+  }
+.language-picker {
+  position: relative;
+  display: inline-block;
+}
+.language-picker .dropdown-toggle {
+  cursor: pointer;
+  background: var(--neutral-900);
+  color: #fff;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 4px;
+}
+.language-picker .dropdown-menu {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background: #fff;
+  border: 1px solid var(--neutral-100);
+  border-radius: var(--md);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  z-index: 1000;
+  min-width: 100%;
+  display: none;
+}
+.language-picker .display-block {
+  display: block;
+}
+.language-picker .dropdown-item {
+  padding: 0.5em 1em;
+  text-decoration: none;
+  color: var(--neutral-700);
+  display: block;
+  border-radius: var(--md);
+}
+.language-picker .dropdown-item.active {
+  font-weight: bold;
+  background: var(--neutral-900);
+  color: #fff;
+}
+.language-picker .dropdown-item:hover {
+  background: var(--neutral-700);
+  color: var(--neutral-50);
+}
+</style>

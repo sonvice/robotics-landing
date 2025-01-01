@@ -1,0 +1,6 @@
+.header-info {
+  --horizontal-alignment: space-between;
+  & h1 {
+    max-width: 40ch;
+  }
+}

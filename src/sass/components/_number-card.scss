@@ -1,0 +1,39 @@
+@use "../abstracts/map-tokens" as MapTokens;
+@use "../abstracts/alias-tokens" as AliasTokens;
+@use "../abstracts/mixins" as Mixins; 
+
+
+.number-card{
+    @include Mixins.generate-css-variables(AliasTokens.$numberCard, "");
+    padding: var(--number-card-padding);
+    background-color: var(--number-card-bg);
+    backdrop-filter:var(--number-card-filter);
+    color: var(--number-card-color);
+    border-radius: var(--number-card-border-radius);
+    border-style: var(--number-card-border-style);
+    border-width: var(--number-card-border-width);
+    border-color: var(--number-card-border-color);
+    @include Mixins.breakpoint(md){
+        --number-card-font-size:var(--size-0);
+        --number-card-padding:var(--space-m);
+    }
+    &__title{
+        font-size: var(--number-card-font-size-title);
+        font-weight: var(--number-card-font-weight-title);
+        @include Mixins.breakpoint(md){
+            --number-card-font-size-title:var(--size-4);
+        }
+    }
+    & img{
+       width: var(--number-card-width-img);
+       @include Mixins.breakpoint(md){
+        --number-card-width-img:var(--size-3);
+    }
+    }
+    & p{
+        font-size: var(--number-card-font-size-sub-title);
+        @include Mixins.breakpoint(md){
+            --number-card-font-size-sub-title:var(--size-0);
+        }
+    }
+}

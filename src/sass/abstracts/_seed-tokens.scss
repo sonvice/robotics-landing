@@ -1,32 +1,54 @@
 //https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors
 
 $seed-neutral-light: (
-  "000": hsl(0, 0%, 100%),
-  "100": hsl(0, 0%, 77%),
-  "200": hsl(255, 7%, 11%),
-  "300": hsl(0, 0%, 1%),
-  "1000": hsl(0, 0%, 0%)
+  "50": #f5f5f5,
+  "100": #e9e9e9,
+  "200": #dadada,
+  "300": #c5c5c5,
+  "400": #9f9f9f,
+  "500": #7d7d7d,
+  "600": #575757,
+  "700": #454545,
+  "800": #282828,
+  "900": #030303,
+);
+$seed-neutral-hsla: (
+  "50": 0 0% 96%,
+  "100": 0 0% 91%,
+  "200": 0 0% 85%,
+  "300": 0 0% 80%,
+  "400": 0 0% 62%,
+  "500": 0 0% 49%,
+  "600": 0 0% 34%,
+  "700": 0 0% 28%,
+  "800": 0 0% 11%,
+  "900": 0 0% 2%,
 );
 
 $seed-neutral-dark: (
-  "000": hsl(0, 0%, 20%),
-  "100": hsl(0, 0%, 33%),
-  "200": hsl(0, 0%, 45%),
-  "300": hsl(0, 0%, 50%),
-  "1000": hsl(0, 0%, 95%)
+"900": #f5f5f5,
+"800": #e9e9e9,
+"700": #dadada,
+"600": #c5c5c5,
+"500": #9f9f9f,
+"400": #7d7d7d,
+"300": #575757,
+"200": #454545,
+"100": #282828,
+"50": #030303,
 );
 
 $seed-primary-light: (
-"50": hsl(48, 76%, 93%),
-"100": hsl(48, 75%, 83%),
-"200": hsl(48, 76%, 72%),
-"300": hsl(48, 76%, 61%),
-"400": hsl(47, 77%, 54%),
-"500": hsl(46, 78%, 49%),
-"600": hsl(43, 83%, 48%),//P
-"700": hsl(39, 87%, 47%),
-"800": hsl(35, 91%, 46%),
-"900": hsl(28, 96%, 44%),
+"50": #fcf3db,
+"100": #f8dfa5,
+"200": #f1cb6a,//P
+"300": #eab829,
+"400": #e6a900,
+"500": #e19c00,
+"600": #e18e00,
+"700": #e27c00,
+"800": #e16a00,
+"900": #e04600,
 );
 
 $seed-primary-dark: (
@@ -36,7 +58,7 @@ $seed-primary-dark: (
   "300": hsl(48, 76%, 61%),
   "400": hsl(47, 77%, 54%),
   "500": hsl(46, 78%, 49%),
-  "600": hsl(43, 83%, 48%),//P
+  "600": hsl(43, 83%, 48%),
   "700": hsl(39, 87%, 47%),
   "800": hsl(35, 91%, 46%),
   "900": hsl(28, 96%, 44%),
@@ -52,14 +74,16 @@ $seed-secondary-dark: (
 
 // Tipografía base
 $seed-font: (
-  "ff-base": "Montserrat Variable",
-  "ff-accent": "Montserrat Variable",
+  "ff-base": "'Poppins', sans-serif",
+  "ff-accent": "'Poppins', sans-serif",
   "fw-default": 400,
-  "fw-semi-bold": 500,
-  "fw-bold": 700
+  "fw-semi-bold": 600,
+  "fw-bold": 700,
+  "fs-italic":italic,
 );
 
 // Espaciado base
+//https://utopia.fyi/space/calculator?c=320,16,1.25,1520,18,1.333,5,2,&s=0.75,1.5|2|3|4|6|6,s-l|l-3xl|xl-4xl|l-2xl&g=s,l,xl,12
 $seed-spacing: (
 "space-auto": 0 auto,
 "space-0": 0,
@@ -72,8 +96,10 @@ $seed-spacing: (
 "space-xl": clamp(3rem, 2.9rem + 0.5vw, 3.375rem),
 "space-2xl": clamp(4rem, 3.8667rem + 0.6667vw, 4.5rem),
 "space-3xl": clamp(6rem, 5.8rem + 1vw, 6.75rem),
+"space-4xl-5xl": clamp(6rem, 4.9565rem + 5.2174vw, 9rem),
 // Pairs
 "space-s-l": clamp(1rem, 0.6667rem + 1.6667vw, 2.25rem),
+"space-l-2xl": clamp(2rem, 1.3333rem + 3.3333vw, 4.5rem),
 );
 
 // Tamaños de fuente
@@ -91,7 +117,8 @@ $seed-sizes: (
 // Bordes redondeados
 $seed-radius: (
   "sm": 4px,
-  "md": 8px,
+  "md": 6px,
   "lg": 12px,
-  "xl": 16px
+  "xl": 16px,
+  "full":9999px,
 );

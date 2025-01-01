@@ -1,34 +1,42 @@
 body {
-    font-family: var(--ff-base);
-    font-size: var(--size-0);
-    background-color: var(--black);
-    color: var(--neutral-900);
-    overflow-x: hidden;
-  }
-  
-  h1,
-  h2,
-  h3 {
-    line-height: 1.2;
-    font-weight: var(--fw-bold);
-    text-transform: capitalize;
-  }
-  
-  h1 {
-    font-size: var(--size-4);
-    max-width: 15ch;
-  }
-  h1,
-  h2 {
-    font-family: var(--ff-accent);
-  }
-  h2 {
-    font-size: var(--size-4);
-  }
-  h3{
-    font-size: var(--size-2);
-  }
-  a:hover {
-    text-decoration: currentColor;
-  }
-  
+  font-family: var(--ff-base);
+  font-size: var(--size-0);
+  background-color: var(--neutral-50);
+  color: var(--neutral-900);
+  overflow-x: hidden;
+}
+
+h1,
+h2 {
+  line-height: 1.2;
+  font-weight: var(--fw-bold);
+  text-transform: capitalize;
+}
+
+h1 {
+  font-size: var(--size-4);
+  max-width: 18ch;
+}
+h1,
+h2 {
+  font-family: var(--ff-accent);
+}
+h2 {
+  font-size: var(--size-4);
+  max-width: 26ch;
+}
+h3 {
+  font-size: var(--size-2);
+  font-weight: var(--fw-semi-bold);
+}
+a:hover {
+  text-decoration: currentColor;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+p {
+  color: var(--neutral-700);
+}

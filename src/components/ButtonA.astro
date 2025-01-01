@@ -1,0 +1,9 @@
+---
+interface Props {
+  text?: string;
+  type?: string;
+  class?:string;
+}
+const { text,type,class:className } = Astro.props;
+---
+<a href="#" class={`btn ${className}`} data-type={type}>{text}</a>

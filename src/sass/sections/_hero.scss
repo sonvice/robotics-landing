@@ -1,0 +1,169 @@
+@use "../abstracts/" as *;
+.hero {
+  --slot: var(--space-xl);
+  &__box1 {
+    display: grid;
+    width: fit-content;
+    grid-template-columns: 1fr;
+    grid-row: auto;
+    grid-template-areas: "hero-img";
+    align-self: self-start;
+    min-height: 100%;
+  }
+  &__box1 > * {
+    grid-area: hero-img;
+  }
+  &__box1 > img {
+    height: 100%;
+    object-fit: cover;
+    width: fit-content;
+  }
+  &__text {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-auto-rows: auto;
+    height: 100%;
+    align-items: start;
+    grid-template-areas:
+      "title title title title title title title ."
+      "... ... ... ... ... ... ... ..."
+      "client client client ... ... number number number";
+
+    @include breakpoint(md) {
+      grid-template-areas:
+        "title title title title title title . ."
+        "... ... ... ... ... ... ... ..."
+        "client client client ... ... number number number";
+    }
+  }
+
+  & .title-section {
+    grid-area: title;
+    margin-inline: var(--space-s);
+    margin-top: var(--space-s);
+    @include breakpoint(lg) {
+      margin-inline: auto;
+      margin-top: var(--space-m);
+    }
+  }
+  &__happy-client {
+    grid-area: client;
+    align-self: self-end;
+  }
+
+  &__client-list {
+    display: flex;
+    align-items: center;
+  }
+  &__client-number {
+    & > span {
+      font-size: var(--size-0);
+      @include breakpoint(md) {
+        font-size: var(--size-2);
+      }
+    }
+    & > p {
+      font-size: var(--size--1);
+      @include breakpoint(md) {
+        font-size: var(--size-0);
+      }
+    }
+  }
+  &__client-list > :not([hidden]) ~ :not([hidden]) {
+    margin-left: -1rem;
+  }
+  &__client-item {
+    width: 52px;
+    background-color: var(--primary-200);
+    padding: 0.2rem;
+    border-radius: var(--full);
+    aspect-ratio: 1 / 1;
+    @include breakpoint(md) {
+      width: 68px;
+    }
+  }
+  &__client-item:last-child {
+    --horizontal-alignment: center;
+    height: 100%;
+  }
+  & .number-card {
+    width: fit-content;
+    grid-area: number;
+    align-self: end;
+    margin-block-end: var(--space-s);
+    margin-inline: auto;
+    @include breakpoint(md) {
+      margin-inline-end: var(--space-l);
+      margin-block-end: var(--space-l);
+    }
+  }
+
+  &__img {
+    -webkit-clip-path: url(#hero-path);
+    clip-path: url(#hero-path);
+    z-index: -1;
+  }
+
+  /* Block 2 */
+  &__box2 {
+    --flex-direction: column;
+    --horizontal-alignment: space-between;
+    --vertical-alignment: start;
+    --gutter: var(--space-l);
+    &-title {
+      font-size: var(--size-4);
+      @include breakpoint(xl) {
+        font-size: var(--size-5);
+      }
+    }
+  }
+
+  &__rank-text {
+    padding: var(--space-m);
+    border: 1px solid var(--neutral-900);
+    border-radius: var(--lg);
+    background-color: var(--neutral-100);
+    --flex-direction: row;
+    --vertical-alignment: center;
+    --gutter: var(--space-s);
+
+    @include breakpoint(xl) {
+      -webkit-mask-image: url("../assets/images/hero/mask.png");
+      mask-image: url("../assets/images/hero/mask.png");
+      mask-size: 100% 100%;
+      -webkit-mask-size: 100% 100%;
+      mask-position: top;
+      border: none;
+      background-image: url("../assets/images/hero/mask-border.png");
+      background-size: 100% 100%;
+    }
+    & img[data-decorate="decorate"] {
+      padding-inline: var(--space-xl);
+      width: 100%;
+    }
+
+    & img[data-machine="machine"] {
+      object-fit: cover;
+    }
+    & img[data-decorate="mask-border"] {
+      inset: 0;
+      height: 100%;
+      width: 100%;
+    }
+    &-number {
+      flex-wrap: nowrap;
+      flex-grow: 2;
+      flex-basis: px-to-rem(240px);
+    }
+    &-machine {
+        flex-grow: 1;
+      --gutter: var(--space-m);
+      --horizontal-alignment: space-around;
+      --vertical-alignment:stretch;
+      & > img {
+        flex-grow: 1;
+        flex-basis: px-to-rem(200px);
+      }
+    }
+  }
+}

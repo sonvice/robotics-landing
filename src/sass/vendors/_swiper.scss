@@ -1,0 +1,38 @@
+@use "../abstracts/mixins" as Mixins; 
+.swiper-slide{
+  & img{
+    width: 100%;
+    aspect-ratio: 9 / 2;
+    object-fit: contain;
+  }
+}
+
+.prev:active,.next:active{
+    transform:translateY(-50%) scale(.98);
+
+  }
+  .carrusel{
+    max-width:70%;
+    margin: 0 auto;
+    @include Mixins.breakpoint(md){
+      max-width: 86%;
+    }
+    @include Mixins.breakpoint(md){
+      max-width: 90%;
+    }
+  }
+.prev,.next{
+  --button-icon-size:32px;
+  --button-padding:0.6em 0.6em;
+  position:absolute;
+  top: 50%;
+  z-index: 10;
+  transform: translateY(-50%); 
+  }
+  .prev{
+    left: auto;
+    
+  }
+  .next{
+    right: 0;
+  }

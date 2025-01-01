@@ -1,0 +1,19 @@
+@use "../abstracts/map-tokens" as MapTokens;
+@use "../abstracts/alias-tokens" as AliasTokens;
+@use "../abstracts/mixins" as Mixins; 
+
+
+.title-section{
+    @include Mixins.generate-css-variables(AliasTokens.$titleSection, "");
+    padding: var(--title-section-padding);
+    background-color: var(--title-section-bg);
+    display: inline-flex;
+    border-radius: var(--title-section-radius);
+    font-weight: var(--title-section-font-weight);
+    font-size: var(--title-section-font-size);
+    justify-content: var(--title-section-justify);
+    color: var(--title-section-color);
+    @include Mixins.breakpoint(md){
+        --title-section-font-size:var(--size-0);
+    }
+}

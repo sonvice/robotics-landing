@@ -1,0 +1,62 @@
+@use "../abstracts" as *;
+@use "../abstracts/alias-tokens" as AliasTokens;
+@use "../abstracts/mixins" as Mixins; 
+
+.card{
+    @include Mixins.generate-css-variables(AliasTokens.$card, "");
+    container-type: inline-size;
+    background-color: var(--card-bg);
+    max-width: var(--card-max-width);
+    border-style: var(--card-border-style);
+    border-width: var(--card-border-width);
+    border-color: var(--card-border-color);
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+
+    &__title{
+        --flex-direction:column;
+        --horizontal-alignment:center;
+        --gutter:var(--space-l);
+        color: var(--card-color-title);
+        text-align: center;
+        @container (min-width: 25em ) {
+            text-align: left;
+            --flex-direction:row;
+            --horizontal-alignment:flex-start;
+        }
+        & h3{
+            font-size: var(--card-font-size-title);
+            @container (min-width: 25em ){
+                flex-basis: 75%;
+            }
+        }
+    }
+    &__icon{
+        background-color: var(--card-bg-icon);
+        border-radius: var(--lg);
+        width: fit-content;
+        padding: var(--space-2xs);
+    }
+    &__paragraph{
+        text-align: var(--card-text-align);
+        color: var(--card-color-paragraph);
+        --flow-spacer:var(--space-m);
+        @container (min-width:25em) {
+            --card-text-align:left;
+        }
+    }
+    &[data-type="dark"] {
+        --card-bg:var(--neutral-900);
+        --card-color-title:var(--neutral-50);
+        --card-border-color:var(--neutral-900);
+        --card-color-paragraph:var(--neutral-400);
+    
+    }
+    &[data-type="primary"] {
+        --card-bg:var(--primary-200);
+        --card-color-title:var(--neutral-900);
+        --card-border-color:var(--neutral-50);
+        --card-bg-icon:var(--neutral-900);
+        --card-color-icon:var(--neutral-50);
+    }
+}

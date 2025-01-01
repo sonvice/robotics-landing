@@ -1,10 +1,24 @@
 ---
-import Button from '../components/Button.astro';
-import Layout from '../layouts/Layout.astro';
+import HeaderInfo from '@components/design/HeaderInfo.astro';
+import Layout from '@layouts/Layout.astro';
+import Hero from '@components/design/Hero.astro';
+import Patner from '@components/design/Patner.astro';
+import About from '@components/design/About.astro';
+import Services from '@components/design/Services.astro';
+import Articles from '@components/design/Articles.astro';
+import Footer from '@components/design/Footer.astro';
 ---
 
 <Layout>
-	<h1 class="text-size-5 text-neutral-300 text-bold mb-space-s">Template Astro v5 With Sass</h1>
-	<p class="fw-semi-bold mb-space-m">Plantilla para desarrolo web con design tokens</p>
-	<Button type="primary" text="Click me" class={"px-space-s py-space-2xs rounded-sm"}></Button>
+	<header>
+		<HeaderInfo/>
+	</header>
+	<main>
+		<Hero/>
+		<Patner/>
+		<About/>
+		<Services/>
+		<Articles/>
+	</main>
+	<Footer/>
 </Layout>

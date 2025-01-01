@@ -1,0 +1,89 @@
+---
+import { useTranslations } from "src/i18n/utils";
+import type { languages } from "src/i18n/ui";
+const currentLang = Astro.currentLocale;
+const t = useTranslations(currentLang as keyof typeof languages);
+import Button from "@components/Button.astro";
+import { footerMenuData } from "@constants/index";
+import { Icon } from 'astro-icon/components'
+---
+
+<footer class="bg-neutral-900 text-neutral-50">
+  <div class="container">
+    <div class="footer | pt-space-2xl flow d-flex">
+
+    
+    <div class="flow">
+      <h2 class="text-size-1 text-primary-200 fw-semi-bold">{t("footer","company")}</h2>
+      <p class="text-neutral-400">
+       {t("footer","description")}
+      </p>
+    </div>
+    <div class="d-flex">
+      {
+        footerMenuData.map((item) => (
+          <div class="flow">
+            <h3 class="text-size-1">{t("footer",`${item.id}.title`)}</h3>
+            <ul>
+              {item.links.map((link) => (
+                <li>
+                  {link.href ? (
+                    <a href={link.href} class="text-size--1 text-neutral-400"> {t("footer", `${item.id}.links.${link.id}`)}</a>
+                  ) : (
+                    <span class="text-size--1 text-neutral-400">
+                        {t("footer", `${item.id}.links.${link.id}`)}
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+    <div class="footer__form | d-flex mt-space-2xl pb-space-2xl">
+      <div>
+        <h3>{t("footer","title")}</h3>
+        <p class="text-neutral-400 text-size--1 text-center mt-space-2xs">{t("footer","signup")}</p>
+      </div>
+        <div class="footer__input | relative d-flex">
+            <input type="text" class="rounded-full" placeholder={t("footer","placeholder")} />
+            <Button text={t("common","subcribe")}/>
+        </div>
+    </div>
+</div>
+<div class="bg-primary-200 text-neutral-900">
+    <div class="container">
+      <div class="footer__copy | text-size--1 fw-semi-bold d-flex py-space-l">
+
+        <div class="d-flex">
+            <Icon name="copyright" color={'red'} />
+            <p>{t("footer","copy")}</p>
+        </div>
+        <div class="d-flex">
+            <Icon name="phone_in_talk" />
+            <p>{t("common","contact")}: +12 345 678 921</p>
+        </div>
+      </div>
+
+    </div>
+</div>
+</footer>
+
+<svg width="0" height="0">
+  <clipPath id="hero-path" clipPathUnits="objectBoundingBox"><path d="M0.926,0.061 c0,-0.034,-0.031,-0.061,-0.07,-0.061 H0.074 C0.033,0,0,0.029,0,0.065 v0.625 c0,0.034,0.031,0.061,0.07,0.061 h0.225 c0.041,0,0.074,0.029,0.074,0.065 v0.07 c0,0.034,0.031,0.061,0.07,0.061 h0.078 c0.016,0,0.03,0.004,0.042,0.011 c0.028,0.017,0.056,0.042,0.089,0.042 H0.926 c0.041,0,0.074,-0.029,0.074,-0.065 V0.273 c0,-0.034,-0.037,-0.06,-0.06,-0.088 A0.074,0.064,0,0,1,0.926,0.147 V0.061"></path></clipPath>
+</svg>
+
+<svg width="0" height="0">
+  <clipPath id="about-path" clipPathUnits="objectBoundingBox"><path d="M0.025,0.368 C0.011,0.368,0,0.389,0,0.415 v0.494 C0,0.959,0.021,1,0.047,1 h0.437 c0.034,0,0.065,-0.063,0.099,-0.069 a0.047,0.092,0,0,1,0.004,0 h0.171 c0.03,0,0.054,-0.047,0.054,-0.105 c0,-0.05,0.021,-0.091,0.047,-0.091 h0.068 c0.041,0,0.074,-0.064,0.074,-0.143 V0.091 C1,0.041,0.979,0,0.953,0 H0.145 C0.104,0,0.071,0.064,0.071,0.143 v0.134 c0,0.05,-0.021,0.091,-0.047,0.091"></path></clipPath>
+</svg>
+
+<svg width="0" height="0">
+  <clipPath id="revolutionize-path" clipPathUnits="objectBoundingBox"><path d="M0.487,0.292 h0.292 c0.035,0,0.063,0.028,0.063,0.063 v0.051 c0,0.03,0.026,0.055,0.056,0.055 h0.038 c0.035,0,0.063,0.028,0.063,0.063 v0.422 c0,0.03,-0.025,0.055,-0.055,0.055 H0.176 c-0.035,0,-0.063,-0.028,-0.063,-0.063 V0.873 c0,-0.03,-0.025,-0.055,-0.055,-0.055 c-0.032,0,-0.058,-0.026,-0.058,-0.057 V0.055 C0,0.024,0.025,0,0.055,0 h0.313 c0.035,0,0.063,0.028,0.063,0.063 v0.175 c0,0.03,0.025,0.055,0.055,0.055"></path></clipPath>
+</svg>
+
+
+<svg width="0" height="0">
+  <clipPath id="article-path"  clipPathUnits="objectBoundingBox"><path d="M0,0.907 V0.299 c0,-0.063,0.035,-0.114,0.079,-0.114 c0.035,0,0.064,-0.042,0.064,-0.093 c0,-0.051,0.029,-0.093,0.064,-0.093 h0.729 C0.971,0,1,0.042,1,0.093 v0.671 c0,0.063,-0.035,0.114,-0.079,0.114 h-0.128 c-0.035,0,-0.064,0.042,-0.064,0.093 c0,0.017,-0.009,0.03,-0.021,0.03 H0.064 C0.029,1,0,0.958,0,0.907"></path></clipPath>
+</svg>

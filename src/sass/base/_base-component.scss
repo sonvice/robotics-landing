@@ -1,0 +1,10 @@
+@use "../abstracts/map-tokens" as MapTokens;
+@use "../abstracts/alias-tokens" as AliasTokens;
+@use "../abstracts/mixins" as Mixins; 
+
+:root {
+
+    @include Mixins.generate-css-variables(AliasTokens.$button, "");
+    // Solo generar las variables para el modo oscuro si está habilitado
+   
+}

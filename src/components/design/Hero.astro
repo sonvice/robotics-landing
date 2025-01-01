@@ -1,0 +1,105 @@
+---
+import { useTranslations } from "src/i18n/utils";
+import type { languages } from "src/i18n/ui";
+const currentLang = Astro.currentLocale;
+const t = useTranslations(currentLang as keyof typeof languages);
+
+import { line, machine } from "@assets/index";
+import { avatar1, avatar2, avatar3, heroRobot, addIcon } from "@assets/index";
+import Nav from "@components/Nav.astro";
+import TitleSection from "@components/TitleSection.astro";
+import NumberCard from "@components/NumberCard.astro";
+---
+
+<div class="container">
+  <Nav />
+</div>
+<section>
+  <div class="container">
+    <div class="hero | grid-col-1-2  pt-space-l-2xl">
+      <div class="hero__box1">
+        <img
+          class="hero__img"
+          src={heroRobot.src}
+          width={heroRobot.width / 2}
+          alt="Robot trabajando"
+        />
+        <div class="hero__text">
+          <TitleSection text={t("hero", "titleInnerImg")} />
+          <div class="hero__happy-client">
+            <div class="hero__client-number mb-space-2xs">
+              <span class="fw-semi-bold">725M +</span><p>{t("hero","titleClientHappy")}</p>
+            </div>
+            <ul class="hero__client-list">
+              <li class="hero__client-item">
+                <img
+                  src={avatar1.src}
+                  class="rounded-full"
+                  width={avatar1.width / 2}
+                  alt="Perfil Avatar"
+                />
+              </li>
+              <li class="hero__client-item">
+                <img
+                  src={avatar2.src}
+                  class="rounded-full"
+                  width={avatar2.width / 2}
+                  alt="Perfil Avatar"
+                />
+              </li>
+              <li class="hero__client-item">
+                <img
+                  src={avatar3.src}
+                  class="rounded-full"
+                  width={avatar3.width / 2}
+                  alt="Perfil Avatar"
+                />
+              </li>
+              <li class="hero__client-item | d-flex bg-primary-200">
+                <img
+                  src={addIcon.src}
+                  class="rounded-full"
+                  alt="Perfil Avatar"
+                />
+              </li>
+            </ul>
+          </div>
+          <NumberCard />
+        </div>
+      </div>
+      <div class="hero__box2 | d-flex">
+        <h1 class="hero__box2-title" set:html={t("hero", "title")} />
+        <div class="hero__rank">
+          <div class="hero__rank-bg | relative">
+              <div class="hero__rank-text |  d-flex">
+                <div class="hero__rank-text-machine d-flex">
+                  <img
+                    src={machine.src}
+                    width={machine.width / 2}
+                    data-machine="machine"
+                    class="rounded-xl"
+                    alt="Machine"
+                  />
+                  <div class="hero__rank-text-number | d-flex">
+                      <div>
+                        <span class="fw-bold text-size-2">70.001+</span>
+                        <p class="text-size--1 fw-semi-bold">{t("hero","titleRank1")}</p>
+                      </div>
+                      <div>
+                        <span class="fw-bold text-size-2">592K</span>
+                        <p class="text-size--1 fw-semi-bold">{t("hero","titleRank2")}</p>
+                      </div>
+                  </div>
+                </div>
+                <img data-decorate="decorate" src={line.src} alt="" aria-hidden="true" />
+              </div>
+          </div>
+        </div>
+        <div class="flow">
+          <h3>{t("hero", "titleParagraph")}</h3>
+          <p>{t("hero", "paragraph")}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

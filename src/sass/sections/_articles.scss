@@ -1,0 +1,9 @@
+.articles{
+    &__post{
+        --gap:var(--space-xl);
+    }
+    &__title {
+        --flex-direction: column;
+        --horizontal-alignment: center;
+    }
+}

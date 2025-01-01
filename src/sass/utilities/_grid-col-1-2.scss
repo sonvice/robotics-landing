@@ -1,0 +1,9 @@
+@use '../abstracts/mixins' as Mixins;
+.grid-col-1-2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--slot,var(--space-l));
+    @include Mixins.breakpoint(lg){
+        grid-template-columns: repeat(2,1fr);
+    }
+}

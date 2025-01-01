@@ -1,0 +1,58 @@
+---
+import { useTranslations } from "src/i18n/utils";
+import type { languages } from "src/i18n/ui";
+const currentLang = Astro.currentLocale;
+const t = useTranslations(currentLang as keyof typeof languages);
+import { robotWork } from "@assets/index";
+import Card from "@components/Card.astro";
+import { cardAbout } from "@constants/index";
+---
+
+<section>
+  <div class="container">
+    <div class="about | mt-space-4xl-5xl">
+    <div class="about__block1 | grid-col-1-2">
+      <div class="flow">
+        <h2 class="about__block1-title" set:html={t("about","title")}>
+         
+        </h2>
+        <p>
+         {t("about","paragraph")}
+        </p>
+      </div>
+      <div class="about__block1-img">
+        <img
+          src={robotWork.src}
+          width={robotWork.width / 2}
+          alt="Robot Trabajando"
+        />
+      </div>
+    </div>
+    <div class="about__block2 | mt-space-3xl grid-col-1-2">
+      <div class="about__block2-card | d-grid">
+        {cardAbout.map((item) => (
+          <Card 
+            title={t("about", `${item.id}.title`,"Default Title")} 
+            paragraph={t("about", `${item.id}.paragraph`, "Default Paragraph")} 
+            icon={item.icon}
+          />
+        ))}
+      </div>
+    <div class="flow">
+        <h3>{t("about","titleBusiness")}</h3>
+        <p>{t("about","paragraphAdvanced")}</p>
+        <div class="d-flex">
+            <div>
+                <span class="fw-bold text-size-4">70.001+</span>
+                <p class="fw-semi-bold text-size-1 text-neutral-900">{t("about","userClients")}</p>
+            </div>
+            <div>
+                <span class="fw-bold text-size-4">592K</span>
+                <p class="fw-semi-bold text-size-1 text-neutral-900">{t("about","transaction")}</p>
+            </div>
+        </div>
+    </div>
+  </div>
+  </div>
+  </div>
+</section>

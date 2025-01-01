@@ -1,0 +1,12 @@
+---
+import { useTranslations } from "src/i18n/utils";
+import type { languages } from "src/i18n/ui";
+const currentLang = Astro.currentLocale;
+const t = useTranslations(currentLang as keyof typeof languages);
+import { accountCircle } from "@assets/index"
+---
+<div class="number-card">
+    <img src={accountCircle.src} alt="">
+    <span class="number-card__title">7,1K+</span>
+    <p class="text-neutral-50">{t("hero","activeClient")}</p>
+</div>

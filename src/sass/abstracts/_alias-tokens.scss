@@ -2,15 +2,63 @@
 @use "map-tokens" as Maptokens;
 
 // Alias general
-$alias: (
-  "font-family-base": map.get(Maptokens.$map-fonts, "ff-base"),
-  "font-weight-default": map.get(Maptokens.$map-font-weights, "default"),
-  "font-weight-bold": map.get(Maptokens.$map-font-weights, "bold"),
-  "bg-primary": map.get(map.get(Maptokens.$map-colors-light, "primary"), "500"),
-  "text-secondary": map.get(map.get(Maptokens.$map-colors-light, "neutral"), "300"),
-  "space-m": map.get(Maptokens.$map-spacing, "space-m"),
-  "radius-lg": map.get(Maptokens.$map-radius, "lg"),
-  "size-0": map.get(Maptokens.$map-sizes, "size-0")
+$button: (
+  //"font-family-base": map.get(Maptokens.$map-fonts, "ff-base"),
+  //"space-m": map.get(Maptokens.$map-spacing, "space-m"),
+  "button-font-size": map.get(Maptokens.$map-sizes, "size-0"),
+  "button-font-weight": map.get(Maptokens.$map-font-weights, "semi-bold"),
+  "button-radius": map.get(Maptokens.$map-radius, "full"),
+  "button-padding":0.7em 1.2em,
+  "button-gap":0.5em,
+  "button-bg":map.get(map.get(Maptokens.$map-colors-light, "primary"), "200"),
+  "button-color":map.get(map.get(Maptokens.$map-colors-light, "neutral"), "900"),
+  "button-hover-bg":map.get(map.get(Maptokens.$map-colors-light, "primary"), "100"),
+  "button-hover-color":map.get(map.get(Maptokens.$map-colors-light, "neutral"), "900"),
+  "button-border-width":2px,
+  "button-border-style":solid,
+  "button-border-color":map.get(map.get(Maptokens.$map-colors-light, "primary"), "200"),
 );
 
+$titleSection:(
+  "title-section-padding":0.7em 1.4em,
+  "title-section-font-weight": map.get(Maptokens.$map-font-weights, "semi-bold"),
+  "title-section-color":map.get(map.get(Maptokens.$map-colors-light, "neutral"), "900"),
+  "title-section-radius": map.get(Maptokens.$map-radius, "full"),
+  "title-section-bg":map.get(map.get(Maptokens.$map-colors-light, "primary"), "200"),
+  "title-section-font-size": map.get(Maptokens.$map-sizes, "size--1"),
+  "title-section-justify":center,
+);
+$numberCard:(
+  "number-card-padding": map.get(Maptokens.$map-spacing, "space-xs"),
+  "number-card-color":map.get(map.get(Maptokens.$map-colors-light, "neutral"), "50"),
+  "number-card-font-size-title": map.get(Maptokens.$map-sizes, "size-2"),
+  "number-card-font-weight-title": map.get(Maptokens.$map-font-weights, "semi-bold"),
+  "number-card-font-size-sub-title": map.get(Maptokens.$map-sizes, "size--1"),
+  "number-card-width-img":map.get(Maptokens.$map-sizes, "size-4"),
+  "number-card-bg":map.get(map.get(Maptokens.$map-neutral-hsla, "neutral-hsla"), "50"),
+  "number-card-filter":blur(10px),
+  "number-card-border-style":solid,
+  "number-card-border-width":2px,
+  "number-card-border-color":map.get(map.get(Maptokens.$map-colors-light, "primary"), "200"),
+  "number-card-border-radius":map.get(Maptokens.$map-radius, "xl"),
+);
+
+$card:(
+"card-padding": map.get(Maptokens.$map-spacing, "space-l"),
+"card-color":map.get(map.get(Maptokens.$map-colors-light, "neutral"), "900"),
+"card-font-size-title": map.get(Maptokens.$map-sizes, "size-1"),
+"card-color-title":map.get(map.get(Maptokens.$map-colors-light, "neutral"), "900"),
+"card-font-weight-title": map.get(Maptokens.$map-font-weights, "semi-bold"),
+"card-font-size-paragraph": map.get(Maptokens.$map-sizes, "size--1"),
+"card-color-paragraph":map.get(map.get(Maptokens.$map-colors-light, "neutral"), "700"),
+"card-bg":map.get(map.get(Maptokens.$map-colors-light, "neutral"), "100"),
+"card-border-style":solid,
+"card-border-width":1px,
+"card-border-color":map.get(map.get(Maptokens.$map-colors-light, "neutral"), "900"),
+"card-border-radius":map.get(Maptokens.$map-radius, "xl"),
+"card-bg-icon":map.get(map.get(Maptokens.$map-colors-light, "primary"), "200"),
+"card-color-icon":map.get(map.get(Maptokens.$map-colors-light, "neutral"), "900"),
+"card-text-align":center,
+"card-max-width":37.5rem,
+);
 

@@ -1,9 +1,13 @@
 ---
 interface Props {
-  text: string;
-  type: string;
-  class:string;
+  text?: string;
+  type?: string;
+  class?:string;
 }
 const { text,type,class:className } = Astro.props;
 ---
-<a href="https://wilsonmunoz.com/" class={`btn ${className}`} data-type={type}>{text}</a>
+<button class={`btn ${className}`} data-type={type}>
+  <slot name="icon-left"/>
+  {text}
+  <slot name="icon-right"/>
+</button>

@@ -4,4 +4,5 @@
     gap: var(--gutter, var(--space-s));
     justify-content: var(--horizontal-alignment, flex-start);
     align-items: var(--vertical-alignment, center);
+    flex-direction: var(--flex-direction,row);
   }

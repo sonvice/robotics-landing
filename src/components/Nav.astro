@@ -1,0 +1,48 @@
+---
+import { useTranslations } from "src/i18n/utils";
+const currentLang = Astro.currentLocale;
+import type { languages } from "src/i18n/ui";
+const t = useTranslations(currentLang as keyof typeof languages)
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+import { Icon } from 'astro-icon/components'
+import { navigation } from "src/constants";
+import { logo } from "@assets/index";
+import Button from "./Button.astro";
+---
+
+<header class="nav | relative d-flex  mt-space-l">
+  <div>
+    <img src={logo.src} alt="" />
+  </div>
+  <nav class="nav__items | d-flex" id="nav">
+    {
+      navigation.map((item) => (
+        <a
+          data-type={`${item.onlyMobile ? "ghost" : ""}`}
+          href={getRelativeLocaleUrl(`${currentLang}`, item.url)}
+          class={`nav__link | d-flex ${item.active ? "active" : ""} py-space-2xs px-space-xs ${item.onlyMobile ? "btn mobile-only" : ""}
+          `}
+        >
+          {t("nav", `${item.title}`)}
+        </a>
+      ))
+    }
+  </nav>
+  <Button text={t("nav","contact")}>
+    <div class="bg-neutral-900 p-space-3xs rounded-full" slot="icon-left">
+      <Icon name="phone" />
+    </div>
+  </Button>
+  <button data-type="burger"> <Icon size={32} name="close" /></button>
+</header>
+
+<script>
+   const burgerMenu = document.querySelector("[data-type='burger']");
+   const nav = document.querySelector("#nav");
+   const toggleNav = () => {
+    nav.classList.toggle("open");
+  };
+
+  burgerMenu.addEventListener("click", toggleNav);
+</script>

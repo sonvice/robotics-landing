@@ -1,0 +1,18 @@
+---
+import { useTranslations } from "src/i18n/utils";
+import type { languages } from "src/i18n/ui";
+const currentLang = Astro.currentLocale;
+const t = useTranslations(currentLang as keyof typeof languages);
+import LenguagePicker from '@components/LanguagePicker.astro';
+---
+<div class="header-info | bg-neutral-900 text-neutral-50">
+    <div class="container">
+        <div class="d-flex text-size--1 py-space-s">
+            <h1 class="text-size--1 fw-semi-bold">{t("headerInfo","title")}</h1>
+            <div class="d-flex">
+                <LenguagePicker/>
+                <p class="text-neutral-50">{t("headerInfo","contact")}: <span>+123 456 789</span></p>
+            </div>
+        </div>
+    </div>
+</div>

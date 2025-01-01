@@ -1,0 +1,22 @@
+---
+interface Props {
+  title: string;
+  paragraph: string;
+  icon?: any;
+  type?: string;
+  iconSize?: number;
+}
+const { title="default title", paragraph="Defauld paragraph", icon,type,iconSize } = Astro.props;
+import { Icon } from 'astro-icon/components'
+
+---
+
+    <div class="card | flow" data-type={type}>
+      <div class="card__title d-flex">
+        <div class="card__icon">
+            <Icon name={icon} size={iconSize ?  iconSize : 36 } />
+        </div>
+        <h3>{title}</h3>
+      </div>
+      <p class="card__paragraph">{paragraph}</p>
+    </div>

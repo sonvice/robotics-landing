@@ -1,0 +1,69 @@
+---
+import { patnerLogo } from "src/constants";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import Button from "./Button.astro";
+import { Icon } from 'astro-icon/components'
+---
+
+<div class="relative">
+
+
+  <div class="carrusel | o-hiddent">
+
+    <ul class="swiper-wrapper">
+      {
+        patnerLogo.map((logo) => (
+          <li class="swiper-slide">
+            <img src={logo.logo.src} alt={logo.alt} />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <Button class:list={"prev"}>
+    <Icon name="left" slot="icon-left" size={32} />
+  </Button>
+  <Button class:list={"next"} > 
+    <Icon name="right" slot="icon-right" size={32} />
+  </Button>
+</div>
+<script>
+  import Swiper from "swiper";
+  import { Navigation } from "swiper/modules";
+  import "swiper/css/bundle";
+  document.addEventListener('DOMContentLoaded', function() {
+  const swiper = new Swiper(".carrusel", {
+    modules: [Navigation],
+    loop: true,
+   
+    navigation: {
+      nextEl: ".prev",
+      prevEl: ".next",
+    },
+    slidesPerView: 1,
+        spaceBetween: 10,
+        breakpoints: {
+          // when window width is >= 480px
+          480: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 3,
+          },
+          1024: {
+           /*  slidesOffsetBefore: 50, */
+            slidesPerView: 5,
+            spaceBetween: 20,
+            
+          },
+        },
+  });
+
+  swiper.on("slideChange", function () {
+    console.log("Swiper");
+  });
+});
+</script>

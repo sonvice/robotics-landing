@@ -1,0 +1,73 @@
+@use "../abstracts/" as *;
+
+.nav {
+  --horizontal-alignment: space-between;
+  background-color: var(--neutral-50);
+  &__link {
+    color: var(--neutral-900);
+    text-decoration: none;
+    &:hover {
+      color: var(--neutral-700);
+    }
+    &.active {
+      border-radius: var(--md);
+      color: var(--neutral-50);
+      background-color: var(--neutral-900);
+    }
+  }
+  & .btn{
+    --card-color-icon:var(--neutral-50);
+  }
+  [data-type="burger"] {
+    display: none;
+  }
+  &__items > .mobile-only {
+    display: none;
+  }
+  @include breakpoint-down(lg) {
+    z-index: 1;
+
+    &__items {
+        &::before{
+            content: "";
+            width: 100vw;
+            min-height: 100vh;
+            background: linear-gradient(180deg, #fcfcfc00, var(--neutral-900));
+            position: absolute;
+            top: 0;
+            z-index: -1;
+        }
+    }
+    &__items {
+        visibility: hidden;
+        opacity: 0;
+        transition: .2s ease;
+      --flex-direction: column;
+      padding-block: var(--space-l);
+      position: absolute;
+      top: px-to-rem(60px);
+      left: 0;
+      background-color: var(--primary-200);
+      width: 100%;
+      border-bottom-right-radius: var(--md);
+      border-bottom-left-radius: var(--md);
+    }
+    &__items.open{
+        visibility: visible;
+        opacity: 1;
+    }
+    &__items > .mobile-only {
+      display: block;
+    }
+
+
+    [data-type="default"] {
+      display: none;
+    }
+    [data-type="burger"] {
+      border: none;
+      display: block;
+      cursor: pointer;
+    }
+  }
+}

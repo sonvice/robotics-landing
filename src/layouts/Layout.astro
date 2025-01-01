@@ -1,57 +1,21 @@
 ---
 import "../sass/style.scss";
+const currentLang = Astro.currentLocale;
+import LanguagePicker from '@components/LanguagePicker.astro'
 ---
 
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang={currentLang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>ROM.AI</title>
 	</head>
-	<body class="bg-primary-100 pt-space-xl">
-		<div class="container">
-			<button id="theme-toggle">Toggle Theme</button>
-			<slot />
-		</div>
+	<body>
+		<!-- <LanguagePicker/> -->
+		<slot/>
 	</body>
 </html>
 
-<script>
-
-// Función para obtener el tema desde localStorage
-const getStoredTheme = (): 'light' | 'dark' | null => {
-  return localStorage.getItem('theme') as 'light' | 'dark' | null;
-};
-
-// Función para establecer el tema y guardarlo en localStorage
-const setTheme = (theme: 'light' | 'dark'): void => {
-  document.documentElement.setAttribute('data-theme', theme);
-  localStorage.setItem('theme', theme); 
-};
-
-// Detectar la preferencia del sistema (si no hay un tema guardado en localStorage)
-const userPreferredTheme: 'light' | 'dark' = getStoredTheme() || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-
-setTheme(userPreferredTheme);
-
-// Detectar cambios en la preferencia del sistema y actualizarlos en localStorage
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-  const newTheme = e.matches ? 'dark' : 'light';
-  setTheme(newTheme);
-});
-
-// Alternar entre los temas si el usuario lo desea
-const toggleTheme = () => {
-  const currentTheme = document.documentElement.getAttribute('data-theme');
-  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-  setTheme(newTheme);
-};
-
-document.querySelector("#theme-toggle")?.addEventListener("click", toggleTheme);
-
-
-
-</script>

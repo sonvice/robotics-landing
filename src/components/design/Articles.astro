@@ -1,0 +1,27 @@
+---
+import { useTranslations } from "src/i18n/utils";
+import type { languages } from "src/i18n/ui";
+const currentLang = Astro.currentLocale;
+const t = useTranslations(currentLang as keyof typeof languages);
+import TitleSection from "@components/TitleSection.astro";
+import { LatestBlog } from "@constants/index";
+import Article from "@components/Article.astro";
+---
+
+<section>
+  <div class="container">
+    <div class="articles | mb-space-4xl-5xl">
+      <div class="articles__title | d-flex text-center mb-space-2xl">
+        <TitleSection text={t("common","title")} />
+        <h2 set:html={t("articles","ArticlesSectionTitle")}></h2>
+      </div>
+      <div class="articles__post d-grid">
+      {
+        LatestBlog.map((item) => ( 
+        <Article img={item.img} paragraph={t("articles",`${item.id}.paragraph`)} title={t("articles",`${item.id}.title`)} alt={item.alt}/>
+        ))
+      }
+    </div>
+  </div>
+  </div>
+</section>

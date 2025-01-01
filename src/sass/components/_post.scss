@@ -1,0 +1,21 @@
+@use "../abstracts/" as *;
+.post{
+    max-width: px-to-rem(520px);
+    --flex-direction:column;
+    --vertical-alignment:stretch;
+    --gutter:var(--space-l);
+    &  img{
+        -webkit-clip-path: url(#article-path);
+      clip-path: url(#article-path);
+    }
+    &__icons{
+        --flex-direction:row;
+        --horizontal-alignment:space-between;
+        --gutter:var(--space-s);
+    }
+    &__icon{
+        display: inline-flex;
+        gap: var(--space-xs);
+        align-items: center;
+    }
+}

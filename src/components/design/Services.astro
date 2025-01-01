@@ -1,0 +1,89 @@
+---
+import { useTranslations } from "src/i18n/utils";
+import type { languages } from "src/i18n/ui";
+const currentLang = Astro.currentLocale;
+const t = useTranslations(currentLang as keyof typeof languages);
+import { Line, MachineRevolutions } from "@assets/index";
+import Card from "@components/Card.astro";
+import TitleSection from "@components/TitleSection.astro";
+import {
+  ServicesCardBig,
+  ServicesCardMini,
+  ServicesCardRevolutions,
+} from "@constants/index";
+---
+
+<section>
+  <div class="services | my-space-4xl-5xl"> 
+    <div class="container">
+      <div class="services__title | d-flex text-center mb-space-2xl">
+        <TitleSection text={t("common","title")} />
+        <h2 set:html={t("services","sectionTitle")}>
+        </h2>
+      </div>
+      <div class="services__explore | grid-col-1-2">
+        <div class="services__explore-card-big">
+          <div>
+            {
+              ServicesCardBig.map((item) => (
+              <Card
+                title={t("services", `${item.id}.title`)}
+                paragraph={t("services", `${item.id}.paragraph`)}
+                icon={item.icon}
+                iconSize={52}
+              />
+              ))
+            }
+          </div>
+          <div class="px-space-2xl py-space-xl">
+            <img src={Line.src} alt="">
+          </div>
+        </div>
+        <div class="services__explore-card-mini flow">
+          {
+            ServicesCardMini.map((item) => (
+              <Card
+                title={t("services", `${item.id}.title`)}
+                paragraph={t("services", `${item.id}.paragraph`)}
+                icon={item.icon}
+                type={item.type}
+              />
+            ))
+          }
+        </div>
+      </div>
+      <div class="services__revolutionize | mt-space-3xl">
+        <div class="services__revolutionize-card | flow">
+        <h2 set:html={t("services","RoboticsSectionTitle")}>
+        </h2>
+        <div class="services__revolutionize-card-child">
+          <p>
+           {t("services","RoboticsSectionParagraph")}
+          </p>
+          
+          <div class="services__revolutionize-item-card flow">
+            {
+              ServicesCardRevolutions.map((item) => (
+              <Card
+                  title={t("services", `${item.id}.title`)}
+                  paragraph={t("services", `${item.id}.paragraph`)}
+                  icon={item.icon}
+                  iconSize={52}
+                />
+              ))
+            }
+          </div>
+        </div>
+      </div>
+        <div  class="services__revolutionize-img">
+          <img
+            src={MachineRevolutions.src}
+            width={MachineRevolutions.width / 2}
+            alt="Machine Revolutions"
+           
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

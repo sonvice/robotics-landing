@@ -9,6 +9,9 @@ $map-colors-light: (
   "primary": seed.$seed-primary-light,
   "secondary": seed.$seed-secondary-light,
 );
+$map-neutral-hsla: (
+  "neutral-hsla": seed.$seed-neutral-hsla,
+);
 
 // Colores derivados para modo oscuro
 $map-colors-dark: (
@@ -26,6 +29,9 @@ $map-font-weights: (
   "default": map.get(seed.$seed-font, "fw-default"),
   "semi-bold": map.get(seed.$seed-font, "fw-semi-bold"),
   "bold": map.get(seed.$seed-font, "fw-bold"),
+);
+$map-font-style: (
+  "italic": map.get(seed.$seed-font, "fs-italic"),
 );
 
 $map-spacing: seed.$seed-spacing;

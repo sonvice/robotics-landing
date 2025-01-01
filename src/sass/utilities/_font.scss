@@ -8,7 +8,17 @@
 }
 
 @each $fw-key, $fw-value in MapTokens.$map-font-weights {
-  .text-#{$fw-key} {
+  .fw-varian-#{$fw-key} {
     font-variation-settings: 'wght' #{$fw-value};
+  }
+}
+@each $fw-key, $fw-value in MapTokens.$map-font-weights {
+  .fw-#{$fw-key} {
+    font-weight: #{$fw-value};
+  }
+}
+@each $fw-key, $fw-value in MapTokens.$map-font-style {
+  .fs-#{$fw-key} {
+    font-style: #{$fw-value};
   }
 }
