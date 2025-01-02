@@ -10,6 +10,10 @@ import addIcon from './images/hero/add.svg';
 import bg from './images/hero/bg.svg';
 import line from './images/hero/line.svg';
 import maskBorder from './images/hero/mask-border.png';
+import close from './close.svg';
+import burger from './burger.svg';
+import closeDark from './closeDark.svg';
+import burgerDark from './burgerDark.svg';
 //About
 import robotWork from './images/about/robots-work.jpg'
 import arStickers from './images/about/ar_stickers.svg'
@@ -69,5 +73,9 @@ export{
     imgPost1,
     imgPost2,
     imgPost3,
-    maskBorder
+    maskBorder,
+    close,
+    burger,
+    closeDark,
+    burgerDark,
 }

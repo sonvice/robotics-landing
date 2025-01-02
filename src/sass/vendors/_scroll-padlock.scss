@@ -1,0 +1,7 @@
+.scroll-padlock-locked {
+    /* Standard way to lock scroll */
+    overflow: hidden;
+  
+    /* Reserves space for scrollbar */
+    padding-right: var(--scroll-padlock-scrollbar-width);
+  }

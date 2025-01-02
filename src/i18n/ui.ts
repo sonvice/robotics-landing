@@ -121,7 +121,7 @@ export const translations = {
         title: "Stay Informed",
         signup: "Sign up for our newsletter",
         placeholder: "Enter your email",
-        copy:"2025 ROM.AI - AI Robotics & Technology. All rights reserved.",
+        copy:"© 2025 ROM.AI - AI Robotics & Technology. All rights reserved.",
         infoSection: {
           title: "Information",
           links: {
@@ -262,7 +262,7 @@ export const translations = {
         title: "Mantente Informado",
         signup: "Suscríbete a nuestro boletín",
         placeholder: "Introduce tu correo electrónico",
-        copy: "2025 ROM.AI - Robótica y Tecnología con IA. Todos los derechos reservados.",
+        copy: "© 2025 ROM.AI - Robótica y Tecnología con IA. Todos los derechos reservados.",
         infoSection: {
           title: "Información",
           links: {

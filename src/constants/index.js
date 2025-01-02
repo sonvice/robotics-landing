@@ -11,12 +11,12 @@ export const navigation = [
 ];
 
 export const patnerLogo = [
-    {logo:patnerLogo1,alt:"Logo 1"},
-    {logo:patnerLogo2,alt:"Logo 2"},
-    {logo:patnerLogo3,alt:"Logo 3"},
-    {logo:patnerLogo4,alt:"Logo 4"},
-    {logo:patnerLogo5,alt:"Logo 5"},
-    {logo:patnerLogo1,alt:"Logo 6"},
+    {logo:"equals",alt:"Logo 1"},
+    {logo:"graphcore",alt:"Logo 2"},
+    {logo:"marvell",alt:"Logo 3"},
+    {logo:"openai",alt:"Logo 4"},
+    {logo:"openweb",alt:"Logo 5"},
+    {logo:"tweag",alt:"Logo 6"},
 ]
 
 export const cardAbout = [

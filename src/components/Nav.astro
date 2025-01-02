@@ -7,13 +7,13 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 
 import { Icon } from 'astro-icon/components'
 import { navigation } from "src/constants";
-import { logo } from "@assets/index";
 import Button from "./Button.astro";
+import { close,burger } from "@assets/index";
 ---
 
 <header class="nav | relative d-flex  mt-space-l">
   <div>
-    <img src={logo.src} alt="" />
+    <Icon width={164} height={64} name="logo" />
   </div>
   <nav class="nav__items | d-flex" id="nav">
     {
@@ -34,15 +34,81 @@ import Button from "./Button.astro";
       <Icon name="phone" />
     </div>
   </Button>
-  <button data-type="burger"> <Icon size={32} name="close" /></button>
+  <button data-type="burger"> <img src={close.src} alt="" aria-hidden="true"></button>
 </header>
-
 <script>
-   const burgerMenu = document.querySelector("[data-type='burger']");
-   const nav = document.querySelector("#nav");
-   const toggleNav = () => {
+  import { close, burger, closeDark, burgerDark } from "@assets/index";
+  import ScrollPadlock from "scroll-padlock";
+  const scrollPadlock = new ScrollPadlock();
+  const burgerMenu = document.querySelector("[data-type='burger']");
+  const nav = document.querySelector("#nav");
+  const icon = burgerMenu?.querySelector("img");
+  const navItems = document.querySelectorAll(".nav__items a");
+
+  // Determinar el tema inicial
+  const getCurrentTheme = () => localStorage.getItem("theme") || "light";
+
+  const setIconByTheme = () => {
+    const isDarkMode = getCurrentTheme() === "dark";
+    icon.src = nav.classList.contains("open")
+      ? isDarkMode ? closeDark.src : close.src
+      : isDarkMode ? burgerDark.src : burger.src;
+  };
+
+  const toggleNav = () => {
     nav.classList.toggle("open");
+    setIconByTheme();
+    document.scrollingElement.classList.toggle("scroll-padlock-locked");
+  };
+
+  const closeNav = () => {
+    nav.classList.remove("open");
+    setIconByTheme();
+    document.scrollingElement.classList.remove("scroll-padlock-locked");
+  };
+
+  const toggleActiveClass = (clickedItem) => {
+    navItems.forEach((item) => {
+      if (item !== clickedItem) {
+        item.classList.remove("active");
+      }
+    });
+    clickedItem.classList.toggle("active");
   };
 
   burgerMenu.addEventListener("click", toggleNav);
+
+  // Manejo de clics en los elementos de navegación
+  navItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      closeNav();
+      toggleActiveClass(item);
+    });
+  });
+
+  // Cambiar los íconos al cambiar el tema
+  const updateIconsOnThemeChange = () => {
+    const observer = new MutationObserver(setIconByTheme);
+    const htmlElement = document.documentElement;
+
+    observer.observe(htmlElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    // Inicializar íconos según el tema actual
+    setIconByTheme();
+  };
+
+  updateIconsOnThemeChange();
+
+  // Añadir o eliminar sombra del header en función del scroll
+  const header = document.querySelector(".header");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 100) {
+      header?.classList.add("shadow-sm", "py-space-m");
+    } else {
+      header?.classList.remove("shadow-sm", "py-space-m");
+    }
+  });
 </script>

@@ -16,7 +16,7 @@ import { Icon } from 'astro-icon/components'
       {
         patnerLogo.map((logo) => (
           <li class="swiper-slide">
-            <img src={logo.logo.src} alt={logo.alt} />
+            <Icon name={`logos/${logo.logo}`} size={64} />
           </li>
         ))
       }
@@ -56,7 +56,7 @@ import { Icon } from 'astro-icon/components'
           1024: {
            /*  slidesOffsetBefore: 50, */
             slidesPerView: 5,
-            spaceBetween: 20,
+            spaceBetween: 24,
             
           },
         },

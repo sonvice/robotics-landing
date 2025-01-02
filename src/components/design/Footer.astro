@@ -56,11 +56,9 @@ import { Icon } from 'astro-icon/components'
 <div class="bg-primary-200 text-neutral-900">
     <div class="container">
       <div class="footer__copy | text-size--1 fw-semi-bold d-flex py-space-l">
-
-        <div class="d-flex">
-            <Icon name="copyright" color={'red'} />
-            <p>{t("footer","copy")}</p>
-        </div>
+ 
+            <p class="d-flex">{t("footer","copy")}</p>
+    
         <div class="d-flex">
             <Icon name="phone_in_talk" />
             <p>{t("common","contact")}: +12 345 678 921</p>
