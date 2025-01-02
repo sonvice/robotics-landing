@@ -4,7 +4,6 @@
 
 .card{
     @include Mixins.generate-css-variables(AliasTokens.$card, "");
-    container-type: inline-size;
     background-color: var(--card-bg);
     max-width: var(--card-max-width);
     border-style: var(--card-border-style);
@@ -12,6 +11,7 @@
     border-color: var(--card-border-color);
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
+    container-type: inline-size;
 
     &__title{
         --flex-direction:column;

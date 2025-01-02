@@ -126,7 +126,6 @@
     --flex-direction: row;
     --vertical-alignment: center;
     --gutter: var(--space-s);
-
     @include breakpoint(xl) {
       -webkit-mask-image: url("../assets/images/hero/mask.png");
       mask-image: url("../assets/images/hero/mask.png");

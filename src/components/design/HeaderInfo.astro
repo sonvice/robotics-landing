@@ -4,14 +4,18 @@ import type { languages } from "src/i18n/ui";
 const currentLang = Astro.currentLocale;
 const t = useTranslations(currentLang as keyof typeof languages);
 import LenguagePicker from '@components/LanguagePicker.astro';
+import Button from "@components/Button.astro";
+import { Icon } from "astro-icon/components";
 ---
 <div class="header-info | bg-neutral-900 text-neutral-50">
     <div class="container">
-        <div class="d-flex text-size--1 py-space-s">
+        <div class="header-info__text d-flex text-size--1 py-space-s">
             <h1 class="text-size--1 fw-semi-bold">{t("headerInfo","title")}</h1>
             <div class="d-flex">
                 <LenguagePicker/>
-                <p class="text-neutral-50">{t("headerInfo","contact")}: <span>+123 456 789</span></p>
+                <Button id="theme-toggle" class="theme" type="ghost"}>
+                        <Icon size={32} name="theme" slot="icon-left"/>
+                </Button>
             </div>
         </div>
     </div>

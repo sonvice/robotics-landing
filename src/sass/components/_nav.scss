@@ -15,9 +15,17 @@
       background-color: var(--neutral-900);
     }
   }
-  & .btn{
-    --card-color-icon:var(--neutral-50);
+  & .btn {
+    --card-color-icon: var(--neutral-50);
+    & svg {
+      --button-icon-size: var(--size-0);
+      --card-color-icon: var(--neutral-50);
+    }
+    & .bg-icon {
+      background-color: var(--neutral-900);
+    }
   }
+
   [data-type="burger"] {
     display: none;
   }
@@ -28,20 +36,18 @@
     z-index: 1;
 
     &__items {
-        &::before{
-            content: "";
-            width: 100vw;
-            min-height: 100vh;
-            background: linear-gradient(180deg, #fcfcfc00, var(--neutral-900));
-            position: absolute;
-            top: 0;
-            z-index: -1;
-        }
-    }
-    &__items {
-        visibility: hidden;
-        opacity: 0;
-        transition: .2s ease;
+      &::before {
+        content: "";
+        width: 100vw;
+        min-height: 100vh;
+        background: linear-gradient(180deg, #fcfcfc00, var(--neutral-900));
+        position: absolute;
+        top: 0;
+        z-index: -1;
+      }
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.2s ease;
       --flex-direction: column;
       padding-block: var(--space-l);
       position: absolute;
@@ -52,22 +58,55 @@
       border-bottom-right-radius: var(--md);
       border-bottom-left-radius: var(--md);
     }
-    &__items.open{
-        visibility: visible;
-        opacity: 1;
+    &__items.open {
+      visibility: visible;
+      opacity: 1;
     }
     &__items > .mobile-only {
       display: block;
     }
-
 
     [data-type="default"] {
       display: none;
     }
     [data-type="burger"] {
       border: none;
+      background: transparent;
+      --card-color-icon:var(--neutral-900);
       display: block;
       cursor: pointer;
+    }
+  }
+}
+
+[data-theme="dark"] {
+.nav {
+    & .btn {
+      --card-color-icon: var(--neutral-50);
+      & svg {
+        --button-icon-size: var(--size-0);
+        --card-color-icon: var(--neutral-900);
+      }
+      & .bg-icon {
+        background-color: var(--neutral-50);
+      }
+    }
+    &__items {
+      &::before {
+        content: "";
+        width: 100vw;
+        min-height: 100vh;
+        background: linear-gradient(180deg, #fcfcfc00, var(--neutral-50));
+        position: absolute;
+        top: 0;
+        z-index: -1;
+      }
+    }
+    @include breakpoint-down(lg){
+      &__link {
+        color: var(--neutral-50);
+  
+      }
     }
   }
 }

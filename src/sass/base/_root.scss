@@ -1,7 +1,7 @@
 @use "../abstracts/map-tokens" as MapTokens;
 @use "../abstracts/alias-tokens" as AliasTokens;
 @use "../abstracts/mixins" as Mixins; 
-$enable-dark-theme: false; 
+$enable-dark-theme: true; 
 :root {
   @include Mixins.generate-css-variables(MapTokens.$map-colors-light, "");
   @include Mixins.generate-css-variables(MapTokens.$map-spacing, "");

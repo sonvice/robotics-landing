@@ -68,53 +68,5 @@ const languageOptions = Object.entries(languages).map(([langKey, label]) => ({
   </script>
 
 <style>
-  .btn{
-    --button-radius:var(--md);
-    --button-font-size:var(--size--1);
-  }
-.language-picker {
-  position: relative;
-  display: inline-block;
-}
-.language-picker .dropdown-toggle {
-  cursor: pointer;
-  background: var(--neutral-900);
-  color: #fff;
-  padding: 0.5em 1em;
-  border: none;
-  border-radius: 4px;
-}
-.language-picker .dropdown-menu {
-  position: absolute;
-  top: 110%;
-  left: 0;
-  background: #fff;
-  border: 1px solid var(--neutral-100);
-  border-radius: var(--md);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  z-index: 1000;
-  min-width: 100%;
-  display: none;
-}
-.language-picker .display-block {
-  display: block;
-}
-.language-picker .dropdown-item {
-  padding: 0.5em 1em;
-  text-decoration: none;
-  color: var(--neutral-700);
-  display: block;
-  border-radius: var(--md);
-}
-.language-picker .dropdown-item.active {
-  font-weight: bold;
-  background: var(--neutral-900);
-  color: #fff;
-}
-.language-picker .dropdown-item:hover {
-  background: var(--neutral-700);
-  color: var(--neutral-50);
-}
+
 </style>

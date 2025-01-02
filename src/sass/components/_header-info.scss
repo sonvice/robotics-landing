@@ -1,6 +1,34 @@
+@use "../abstracts/" as *;
 .header-info {
   --horizontal-alignment: space-between;
+  border-bottom: 1px solid hsl(var(--neutral-hsla-800), .8);
   & h1 {
     max-width: 40ch;
+  }
+
+  .btn.theme {
+    --button-padding: var(--space-2xs);
+    & svg {
+      --button-icon-size: var(--size-0);
+    }
+  }
+
+  &__text{
+    --gutter: var(--space-m);
+    @include breakpoint-down(sm) {
+      &>:nth-child(2){
+        flex-grow: 1;
+      }
+    }
+    
+  }
+}
+[data-theme=dark]{
+  .header-info{
+    background-color: var(--neutral-50);
+    color: var(--neutral-900);
+    p{
+      color: var(--neutral-900);
+    }
   }
 }

@@ -5,7 +5,7 @@ import LanguagePicker from '@components/LanguagePicker.astro'
 ---
 
 <!doctype html>
-<html lang={currentLang}>
+<html lang={currentLang} data-theme="light">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -14,8 +14,38 @@ import LanguagePicker from '@components/LanguagePicker.astro'
 		<title>ROM.AI</title>
 	</head>
 	<body>
-		<!-- <LanguagePicker/> -->
 		<slot/>
 	</body>
 </html>
 
+<script>
+
+	const getStoredTheme = (): 'light' | 'dark' | null => {
+	  return localStorage.getItem('theme') as 'light' | 'dark' | null;
+	};
+	
+	const setTheme = (theme: 'light' | 'dark'): void => {
+	  document.documentElement.setAttribute('data-theme', theme);
+	  localStorage.setItem('theme', theme); 
+	};
+	
+	// Detectar la preferencia del sistema (si no hay un tema guardado en localStorage)
+	const userPreferredTheme: 'light' | 'dark' = getStoredTheme() || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+	
+	setTheme(userPreferredTheme);
+	
+	// Detectar cambios en la preferencia del sistema y actualizarlos en localStorage
+	window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+	  const newTheme = e.matches ? 'dark' : 'light';
+	  setTheme(newTheme);
+	});
+	
+	const toggleTheme = () => {
+	  const currentTheme = document.documentElement.getAttribute('data-theme');
+	  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+	  setTheme(newTheme);
+	};
+	
+	document.querySelector("#theme-toggle")?.addEventListener("click", toggleTheme);
+	
+	</script>

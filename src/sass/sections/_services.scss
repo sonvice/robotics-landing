@@ -8,7 +8,8 @@
     --slot: var(--space-xl);
   }
   &__explore-card-big {
-    padding-block: var(--space-xl);
+    padding-block-end: var(--space-xl);
+    padding-block-start: var(--space-m);
     background-color: var(--neutral-100);
     border: 1px solid var(--neutral-900);
     border-radius: var(--xl);
@@ -99,6 +100,39 @@
       @include breakpoint(lg){
         grid-column: 2 / 4;
     }
+    }
+  }
+}
+
+
+[data-theme=dark]{
+  .services{
+    &__explore-card-big {
+      & .card {
+        --card-color-title:var(--neutral-900);
+        --card-color-paragraph:var(--neutral-600);
+      }
+    }
+    &__explore-card-mini {
+      & .card {
+        --card-color-title:var(--neutral-50);
+        --card-color-paragraph:var(--neutral-100);
+      }
+      & .card:nth-child(1) {
+        --card-bg:var(--neutral-800);
+      }
+      & .card:nth-child(2) {
+        --card-bg-icon:var(--neutral-50);
+        --card-color-icon:var(--neutral-900);
+      }
+    }
+    &__revolutionize {
+      &-item-card {
+        & .card {
+          --card-color-title:var(--neutral-900);
+          --card-color-paragraph:var(--neutral-600);
+        }
+      }
     }
   }
 }

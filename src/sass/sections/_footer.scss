@@ -1,4 +1,10 @@
 @use "../abstracts/" as *;
+footer{
+  background-image: url(../assets/pattern.svg);
+  background-size: cover;
+  background-position: center;
+}
+
 .footer {
   --gutter: var(--space-xl);
   & > :nth-child(1) {
@@ -52,5 +58,23 @@
   &__copy {
     --horizontal-alignment: space-between;
     --gutter: var(--space-2xs);
+  }
+}
+
+
+[data-theme=dark]{
+  footer{
+    --neutral-900: var(--neutral-50);
+    --neutral-50: var(--neutral-900);
+    .footer{
+      &__input{
+       color: var(--neutral-100);
+      }
+      &__copy{
+        p{
+          color: var(--neutral-100);
+        }
+      }
+    }
   }
 }
