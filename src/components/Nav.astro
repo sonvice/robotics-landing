@@ -12,9 +12,9 @@ import { close,burger } from "@assets/index";
 ---
 
 <header class="nav | relative d-flex  mt-space-l">
-  <div>
+  <a href="/">
     <Icon width={164} height={64} name="logo" />
-  </div>
+  </a>
   <nav class="nav__items | d-flex" id="nav">
     {
       navigation.map((item) => (
@@ -37,78 +37,92 @@ import { close,burger } from "@assets/index";
   <button data-type="burger"> <img src={close.src} alt="" aria-hidden="true"></button>
 </header>
 <script>
-  import { close, burger, closeDark, burgerDark } from "@assets/index";
-  import ScrollPadlock from "scroll-padlock";
-  const scrollPadlock = new ScrollPadlock();
-  const burgerMenu = document.querySelector("[data-type='burger']");
-  const nav = document.querySelector("#nav");
-  const icon = burgerMenu?.querySelector("img");
-  const navItems = document.querySelectorAll(".nav__items a");
+import LocomotiveScroll from "locomotive-scroll";
+import { close, burger, closeDark, burgerDark } from "@assets/index";
+import ScrollPadlock from "scroll-padlock";
 
-  // Determinar el tema inicial
-  const getCurrentTheme = () => localStorage.getItem("theme") || "light";
+// Inicializar Locomotive Scroll
+const locomotiveScroll = new LocomotiveScroll({
+  el: document.querySelector("[data-scroll-container]"),
+  smooth: true,
+});
 
-  const setIconByTheme = () => {
-    const isDarkMode = getCurrentTheme() === "dark";
-    icon.src = nav.classList.contains("open")
-      ? isDarkMode ? closeDark.src : close.src
-      : isDarkMode ? burgerDark.src : burger.src;
-  };
+const scrollPadlock = new ScrollPadlock();
+const burgerMenu = document.querySelector("[data-type='burger']");
+const nav = document.querySelector("#nav");
+const icon = burgerMenu?.querySelector("img");
+const navItems = document.querySelectorAll(".nav__items a");
 
-  const toggleNav = () => {
-    nav.classList.toggle("open");
-    setIconByTheme();
-    document.scrollingElement.classList.toggle("scroll-padlock-locked");
-  };
+// Determinar el tema inicial
+const getCurrentTheme = () => localStorage.getItem("theme") || "light";
 
-  const closeNav = () => {
-    nav.classList.remove("open");
-    setIconByTheme();
-    document.scrollingElement.classList.remove("scroll-padlock-locked");
-  };
+const setIconByTheme = () => {
+  const isDarkMode = getCurrentTheme() === "dark";
+  icon.src = nav.classList.contains("open")
+    ? isDarkMode
+      ? closeDark.src
+      : close.src
+    : isDarkMode
+    ? burgerDark.src
+    : burger.src;
+};
 
-  const toggleActiveClass = (clickedItem) => {
-    navItems.forEach((item) => {
-      if (item !== clickedItem) {
-        item.classList.remove("active");
-      }
-    });
-    clickedItem.classList.toggle("active");
-  };
+// Función para bloquear/desbloquear el scroll
+const toggleScroll = (shouldLock) => {
+  if (shouldLock) {
+    document.documentElement.classList.add("scroll-padlock-locked");
+    locomotiveScroll.stop(); // Pausa Locomotive Scroll
+  } else {
+    document.documentElement.classList.remove("scroll-padlock-locked");
+    locomotiveScroll.start(); // Reanuda Locomotive Scroll
+  }
+};
 
-  burgerMenu.addEventListener("click", toggleNav);
+const toggleNav = () => {
+  const isOpen = nav.classList.toggle("open");
+  setIconByTheme();
+  toggleScroll(isOpen);
+};
 
-  // Manejo de clics en los elementos de navegación
+const closeNav = () => {
+  nav.classList.remove("open");
+  setIconByTheme();
+  toggleScroll(false);
+};
+
+const toggleActiveClass = (clickedItem) => {
   navItems.forEach((item) => {
-    item.addEventListener("click", () => {
-      closeNav();
-      toggleActiveClass(item);
-    });
-  });
-
-  // Cambiar los íconos al cambiar el tema
-  const updateIconsOnThemeChange = () => {
-    const observer = new MutationObserver(setIconByTheme);
-    const htmlElement = document.documentElement;
-
-    observer.observe(htmlElement, {
-      attributes: true,
-      attributeFilter: ["data-theme"],
-    });
-
-    // Inicializar íconos según el tema actual
-    setIconByTheme();
-  };
-
-  updateIconsOnThemeChange();
-
-  // Añadir o eliminar sombra del header en función del scroll
-  const header = document.querySelector(".header");
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 100) {
-      header?.classList.add("shadow-sm", "py-space-m");
-    } else {
-      header?.classList.remove("shadow-sm", "py-space-m");
+    if (item !== clickedItem) {
+      item.classList.remove("active");
     }
   });
+  clickedItem.classList.toggle("active");
+};
+
+burgerMenu.addEventListener("click", toggleNav);
+
+// Manejo de clics en los elementos de navegación
+navItems.forEach((item) => {
+  item.addEventListener("click", () => {
+    closeNav();
+    toggleActiveClass(item);
+  });
+});
+
+// Cambiar los íconos al cambiar el tema
+const updateIconsOnThemeChange = () => {
+  const observer = new MutationObserver(setIconByTheme);
+  const htmlElement = document.documentElement;
+
+  observer.observe(htmlElement, {
+    attributes: true,
+    attributeFilter: ["data-theme"],
+  });
+
+  // Inicializar íconos según el tema actual
+  setIconByTheme();
+};
+
+updateIconsOnThemeChange();
+
 </script>

@@ -25,6 +25,7 @@ import { cardAbout } from "@constants/index";
           src={robotWork.src}
           width={robotWork.width / 2}
           alt="Robot Trabajando"
+          data-scroll data-scroll-css-progress
         />
       </div>
     </div>
@@ -32,8 +33,8 @@ import { cardAbout } from "@constants/index";
       <div class="about__block2-card | d-grid">
         {cardAbout.map((item) => (
           <Card 
-            title={t("about", `${item.id}.title`,"Default Title")} 
-            paragraph={t("about", `${item.id}.paragraph`, "Default Paragraph")} 
+            title={t("about", `${item.id}.title`) as string} 
+            paragraph={t("about", `${item.id}.paragraph`) as string} 
             icon={item.icon}
           />
         ))}
@@ -43,11 +44,18 @@ import { cardAbout } from "@constants/index";
         <p>{t("about","paragraphAdvanced")}</p>
         <div class="d-flex">
             <div>
-                <span class="fw-bold text-size-4">70.001+</span>
+              <span class="about__number-container | fw-bold text-size-4">
+                <span  class="mr-space-3xs">+</span>
+                  <span class="about__animated-number" data-scroll data-scroll-event-progress="progressEvent"  data-final-value="70001">0</span>
+
+              </span>
                 <p class="fw-semi-bold text-size-1 text-neutral-900">{t("about","userClients")}</p>
             </div>
             <div>
-                <span class="fw-bold text-size-4">592K</span>
+              <span  class="about__number-container | fw-bold text-size-4">
+                <span class="about__animated-number" data-scroll data-scroll-event-progress="progressEvent" data-final-value="592">592</span><span class="ml-space-3xs">K</span>
+
+              </span>
                 <p class="fw-semi-bold text-size-1 text-neutral-900">{t("about","transaction")}</p>
             </div>
         </div>
@@ -56,3 +64,8 @@ import { cardAbout } from "@constants/index";
   </div>
   </div>
 </section>
+
+<script>
+  import { initializeLocomotiveScroll } from '@src/js/locomotiveScroll.js';
+  initializeLocomotiveScroll();
+</script>

@@ -72,7 +72,7 @@
     [data-type="burger"] {
       border: none;
       background: transparent;
-      --card-color-icon:var(--neutral-900);
+      --card-color-icon: var(--neutral-900);
       display: block;
       cursor: pointer;
     }
@@ -80,7 +80,7 @@
 }
 
 [data-theme="dark"] {
-.nav {
+  .nav {
     & .btn {
       --card-color-icon: var(--neutral-50);
       & svg {
@@ -102,10 +102,13 @@
         z-index: -1;
       }
     }
-    @include breakpoint-down(lg){
+    @include breakpoint-down(lg) {
       &__link {
         color: var(--neutral-50);
-  
+        &.active {
+          background-color: var(--neutral-50);
+          color: var(--neutral-900);
+        }
       }
     }
   }

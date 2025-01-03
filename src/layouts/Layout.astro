@@ -19,33 +19,9 @@ import LanguagePicker from '@components/LanguagePicker.astro'
 </html>
 
 <script>
+import { initTheme, toggleTheme } from '@src/js/theme.js';
 
-	const getStoredTheme = (): 'light' | 'dark' | null => {
-	  return localStorage.getItem('theme') as 'light' | 'dark' | null;
-	};
+initTheme();
+document.querySelector("#theme-toggle")?.addEventListener("click", toggleTheme);
 	
-	const setTheme = (theme: 'light' | 'dark'): void => {
-	  document.documentElement.setAttribute('data-theme', theme);
-	  localStorage.setItem('theme', theme); 
-	};
-	
-	// Detectar la preferencia del sistema (si no hay un tema guardado en localStorage)
-	const userPreferredTheme: 'light' | 'dark' = getStoredTheme() || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-	
-	setTheme(userPreferredTheme);
-	
-	// Detectar cambios en la preferencia del sistema y actualizarlos en localStorage
-	window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-	  const newTheme = e.matches ? 'dark' : 'light';
-	  setTheme(newTheme);
-	});
-	
-	const toggleTheme = () => {
-	  const currentTheme = document.documentElement.getAttribute('data-theme');
-	  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-	  setTheme(newTheme);
-	};
-	
-	document.querySelector("#theme-toggle")?.addEventListener("click", toggleTheme);
-	
-	</script>
+</script>

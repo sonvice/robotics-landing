@@ -17,7 +17,7 @@ import {
   <div class="services | my-space-4xl-5xl"> 
     <div class="container">
       <div class="services__title | d-flex text-center mb-space-2xl">
-        <TitleSection text={t("common","title")} />
+        <TitleSection text={t("common","title") as string} />
         <h2 set:html={t("services","sectionTitle")}>
         </h2>
       </div>
@@ -27,8 +27,8 @@ import {
             {
               ServicesCardBig.map((item) => (
               <Card
-                title={t("services", `${item.id}.title`)}
-                paragraph={t("services", `${item.id}.paragraph`)}
+                title={t("services", `${item.id}.title`) as string}
+                paragraph={t("services", `${item.id}.paragraph`) as string}
                 icon={item.icon}
                 iconSize={52}
               />
@@ -43,8 +43,8 @@ import {
           {
             ServicesCardMini.map((item) => (
               <Card
-                title={t("services", `${item.id}.title`)}
-                paragraph={t("services", `${item.id}.paragraph`)}
+                title={t("services", `${item.id}.title`) as string}
+                paragraph={t("services", `${item.id}.paragraph`) as string}
                 icon={item.icon}
                 type={item.type}
               />
@@ -65,8 +65,8 @@ import {
             {
               ServicesCardRevolutions.map((item) => (
               <Card
-                  title={t("services", `${item.id}.title`)}
-                  paragraph={t("services", `${item.id}.paragraph`)}
+                  title={t("services", `${item.id}.title`) as string}
+                  paragraph={t("services", `${item.id}.paragraph`) as string}
                   icon={item.icon}
                   iconSize={52}
                 />
@@ -80,7 +80,7 @@ import {
             src={MachineRevolutions.src}
             width={MachineRevolutions.width / 2}
             alt="Machine Revolutions"
-           
+            data-scroll data-scroll-css-progress
           />
         </div>
       </div>

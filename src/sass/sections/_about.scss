@@ -7,6 +7,7 @@
       clip-path: url(#about-path);
     }
     & img {
+      opacity: var(--progress);
       width: fit-content;
       height: 100%;
       object-fit: cover;
@@ -19,6 +20,20 @@
         max-width: 18ch;
       }
     }
+  }
+  &__number-container{
+    display: inline-flex;
+    align-items: baseline;
+  }
+  &__animated-number:nth-child(2){
+    display: inline-block;
+    min-width: 6ch; 
+    text-align: left; 
+  }
+  &__animated-number:nth-child(1){
+    display: inline-block;
+    min-width: 3ch; 
+    text-align: right; 
   }
 
   &__block2 {
