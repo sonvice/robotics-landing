@@ -1,107 +1,52 @@
-# Astro Starter Kit With Sass
+# ROM.AI - AI Robotics & Technology Website
 
-Plantilla con de Astro v5, con sass y estructura de 
-carpetas escalables para manejar de mejor manera el css
-en proyectos web.
-
-# Starter Template
-
-Este proyecto es un **Starter Template** que proporciona una base sólida para iniciar proyectos web. El enfoque principal está en la implementación de un sistema de diseño escalable utilizando **clases de utilidad** basadas en **tokens de diseño**. Esto permite una personalización sencilla y coherente para cualquier proyecto.
-
-## Características
-
-1. **Clases de utilidad basadas en tokens**:
-   - Los estilos están diseñados utilizando tokens de diseño centralizados (colores, tipografías, espacios, tamaños, etc.).
-   - Utiliza `@use` de Sass para manejar mapas de tokens y generar clases de utilidad dinámicas.
-
-2. **Alias de tokens**:
-   - Se han definido alias que actúan como una capa semántica para mapear los tokens a conceptos específicos de diseño.
-
-3. **Modularidad y escalabilidad**:
-   - Separación de estilos en carpetas bien organizadas.
-   - Compatible con diferentes temas (light, dark, etc.).
-
-4. **Fácil personalización**:
-   - Solo necesitas modificar los tokens base o alias para actualizar los estilos globales del proyecto.
-
-5. **Listo para producción**:
-   - Configuración optimizada para ser integrada fácilmente en proyectos.
-
-## Estructura del Proyecto
-
-```
-├── src/
-│   ├── styles/
-│   │   ├── abstracts/        # Tokens y variables base
-│   │   ├── base/             # Estilos globales como `_root.scss`
-│   │   ├── components/       # Estilos específicos de componentes
-│   │   └── utilities/        # Clases de utilidad generadas dinámicamente
-│   └── ...                   # Otros archivos del proyecto
-├── public/
-├── package.json
-└── ...
-```
-
-## Uso del Template
-
-### Requisitos Previos
-- [Node.js](https://nodejs.org/) instalado en tu sistema.
-- Administrador de paquetes como **npm** o **yarn**.
-
-### Instalación
-1. Clona este repositorio:
-   ```bash
-   git clone <URL_DEL_REPOSITORIO>
-   ```
-
-2. Instala las dependencias:
-   ```bash
-   npm install
-   ```
-
-3. Ejecuta el proyecto en modo desarrollo:
-   ```bash
-   npm run dev
-   ```
-
-4. Compila para producción:
-   ```bash
-   npm run build
-   ```
-
-### Cómo utilizar los tokens y las clases de utilidad
-1. Los tokens están definidos en los archivos dentro de `src/styles/abstracts/`.
-2. Las clases de utilidad generadas automáticamente pueden ser utilizadas directamente en el HTML o como mixins en los estilos personalizados.
-3. Puedes añadir nuevos tokens o modificar los existentes en `_root.scss` y las clases se actualizarán automáticamente.
-
-### Ejemplo de clases de utilidad
-```html
-<div class="bg-primary-500 radius-lg p-space-m">
-  Contenido con estilos basados en tokens
+![ROM.AI Banner](public/robotics-banner.png)
+<div align="center">
+<div>
+    <img src="https://img.shields.io/badge/-Astro-black?style=for-the-badge&logoColor=white&logo=astro&color=646CFF" alt="Astro" />
+    <img src="https://img.shields.io/badge/-Locomotive.js-black?style=for-the-badge&logoColor=white&logo=javascript&color=F7DF1E" alt="Locomotive.js" />
+    <img src="https://img.shields.io/badge/-Swiper.js-black?style=for-the-badge&logoColor=white&logo=swiper&color=6332F6" alt="Swiper.js" />
+    <img src="https://img.shields.io/badge/-CSS%20@container%20queries-black?style=for-the-badge&logoColor=white&logo=css3&color=1572B6" alt="CSS @container queries" />
+    <img src="https://img.shields.io/badge/-SASS-black?style=for-the-badge&logoColor=white&logo=sass&color=CC6699" alt="SASS" />
+    <img src="https://img.shields.io/badge/-i18n-black?style=for-the-badge&logoColor=white&logo=i18next&color=26A69A" alt="i18n" />
 </div>
+<h3 align="center">ROM.AI - AI Robotics & Technology Website</h3>
+</div>
+
+## Descripción
+ROM.AI es una landing page moderna y responsiva diseñada para promover soluciones de robótica e inteligencia artificial. Este proyecto destaca por su uso de tecnologías avanzadas y una implementación multilingüe (español e inglés).
+
+## Características principales
+- **Multilenguaje:** Soporte completo para español e inglés utilizando la librería i18n de Astro.
+- **Animaciones suaves:** Implementadas con Locomotive.js para una experiencia de scroll fluida.
+- **Slider dinámico:** Swiper.js para presentar contenido destacado de manera interactiva.
+- **Estilos modernos:** Uso de consultas @container para layouts responsivos y tokens de diseño en SASS.
+- **Soporte para temas:** Iconografía SVG adaptable al modo oscuro.
+
+## Instalación
+1. Clona este repositorio.
+```bash
+ git clone https://github.com/sonvice/robotics-landing.git
 ```
-- **`bg-primary-500`**: Color de fondo principal.
-- **`radius-lg`**: Bordes redondeados grandes.
-- **`p-space-m`**: Espaciado de padding mediano.
+2. Navega al directorio del proyecto.
+```bash
+cd robotics-landing
+```
+3. Instala las dependencias.
+```bash
+npm install
+```
+4. Inicia el servidor de desarrollo.
+```bash
+npm run dev
+```
 
-## Licencia
-Este proyecto está bajo la [Licencia MIT](LICENSE).
+## Tecnologías utilizadas
+- **Astro.js:** Framework principal para el desarrollo.
+- **Locomotive.js:** Animaciones suaves y scroll controlado.
+- **Swiper.js:** Carrusel interactivo para el contenido.
+- **CSS @container queries:** Diseño responsivo basado en el tamaño de los contenedores.
+- **SASS:** Preprocesador CSS para una gestión eficiente de estilos.
+- **i18n:** Soporte multilenguaje.
 
-
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+---
